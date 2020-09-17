@@ -22,44 +22,18 @@ module.exports = (sequelize, DataTypes) => {
           args: true,
           msg: 'Username is required'
         }
-      },
-      unique: {
-        args: true,
-        msg: 'This username has already been registered'
       }
     },
-    email: {
-      type: DataTypes.STRING,
-      validate: {
-        isEmail:{
-          args: true,
-          msg: 'Invalid Email Format'
-        }
-      },
-      unique: {
-        args: true,
-        msg: 'This email has already been registered'
-      }
-    },
-    password: {
-      type: DataTypes.STRING,
-      validate: {
-        len: {
-          args: [3, 9],
-          msg: 'Password must be more than 3 characters and less than 9 characters'
-        }
-      }
-    },
-    imgUrl: DataTypes.TEXT
+    imgUrl: DataTypes.TEXT,
+    wins: DataTypes.INTEGER,
+    totalPlayed: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'User',
     hooks: {
       beforeCreate(user, opt) {
-        user.password = hashPassword(user.password)
         if (!user.imgUrl) {
           user.imgUrl = 'https://i.stack.imgur.com/l60Hf.png'
-          console.log('masuk')
         }
       }
     }
