@@ -91,7 +91,7 @@ export default {
             this.cards[this.match[0].index].isFlipped = false
             this.cards[this.match[1].index].isFlipped = false
             this.match = []
-          }, 2000)
+          }, 1000)
         } else {
           this.match = []
         }
