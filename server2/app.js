@@ -54,6 +54,9 @@ io.on("connect", function(socket) {
   socket.on('updateScore', function(data) {
     socket.broadcast.emit('fetchUserData', data)
   })
+  socket.on('winner', function(data) {
+    io.emit('winner', data)
+  })
 })
 
 server.listen(3000, () => {
