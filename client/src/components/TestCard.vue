@@ -7,7 +7,8 @@
           :key="card.id"
           :card="card"
           v-on:flipCard="flipCard"
-        />{{ users }}
+        />
+        <!-- {{ users }} -->
       </div>
     </div>
   </div>

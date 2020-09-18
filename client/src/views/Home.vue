@@ -15,14 +15,14 @@
     </div>
     <div class="user-bar">
       <div class="score-container">
-        <h2 class="score">Score: 980  🎲 <span style="font-weight: 300">{{ currentPlayer.name }} playing...</span></h2>
+        <h2 class="score">🎲 <span style="font-weight: 300">{{ currentPlayer.name }} playing...</span></h2>
       </div>
       <div class="score-container">
         
       </div>
-      <div class="opponent-container">
+      <!-- <div class="opponent-container">
         <h2 class="opponent">⛄️ You're competing: NAME2</h2>
-      </div>
+      </div> -->
     </div>
     <TestCard></TestCard>
     <!-- <router-view></router-view> -->
@@ -58,9 +58,24 @@ export default {
   created () {
     this.username = localStorage.username
   },
+  sockets: {
+    winner (data) {
+      alert(`${data} is the winner`)
+    }
+  },
+  watch: {
+    counter (val) {
+      if (val === 10) {
+        this.$socket.emit('winner', localStorage.username)
+      }
+    } 
+  },
   computed: {
     currentPlayer () {
       return this.$store.state.currentPlayer
+    },
+    counter () {
+      return this.$store.state.counter
     }
   }
 }

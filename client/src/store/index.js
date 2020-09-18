@@ -8,7 +8,8 @@ export default new Vuex.Store({
     cards: [],
     match: [],
     users: [],
-    currentPlayer: {}
+    currentPlayer: {},
+    counter: 0
   },
   getters: {
     allFlippedCards (state) {
@@ -65,9 +66,10 @@ export default new Vuex.Store({
         this._vm.$socket.emit('changeCurrentPlayer', state.currentPlayer)
         state.match = []
       } else {
-        state.match.forEach(item => {
-          state.cards[item.index].matched = true
-        })
+        // state.match.forEach(item => {
+        //   state.cards[item.index].matched = true
+        // })
+        state.counter++
         state.users.forEach(user => {
           if (user.name === localStorage.username) {
             user.score++
