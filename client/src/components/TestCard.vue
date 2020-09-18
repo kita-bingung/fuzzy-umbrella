@@ -2,91 +2,107 @@
   <div class="row">
     <div class="mx-auto">
       <div class="row justify-content-md-center">
-        <div v-for="(card, i) in cards" :key="i" class="col-auto mb-3 flip-container" :class="{ 'flipped': card.isFlipped }" @click="flipCard (card)">
-          <div class="memorycard">
-            <div class="front border rounded shadow"><img width="100" height="150" src="/assets/images/memorycard/pattern3.jpeg"></div>
-            <div class="back rounded border"><img width="100" height="150" src="'/assets/images/memorycard/test.jpeg"></div>
-          </div>
-        </div>
+        <Card
+          v-for="card in cards"
+          :key="card.id"
+          :card="card"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
+import Card from '../components/Card.vue'
 
 export default {
   name: 'TestCard',
   data () {
     return {
-      cards: [
-        {
-          name: 'Apple',
-          img: 'apple.gif'
-        },
-        {
-          name: 'Banana',
-          img: 'banana.gif'
-        },
-        {
-          name: 'Orange',
-          img: 'orange.jpg'
-        },
-        {
-          name: 'Pineapple',
-          img: 'pineapple.png'
-        },
-        {
-          name: 'Strawberry',
-          img: 'strawberry.png'
-        },
-        {
-          name: 'watermelon',
-          img: 'watermelon.jpg'
-        },
-        {
-          name: 'Apple',
-          img: 'apple.gif'
-        },
-        {
-          name: 'Banana',
-          img: 'banana.gif'
-        },
-        {
-          name: 'Orange',
-          img: 'orange.jpg'
-        },
-        {
-          name: 'Pineapple',
-          img: 'pineapple.png'
-        },
-        {
-          name: 'Strawberry',
-          img: 'strawberry.png'
-        },
-        {
-          name: 'watermelon',
-          img: 'watermelon.jpg'
-        }
-      ],
+      // state.cards[payload.index].isFlipped = true
+      newCards: [],
+      // cards: [
+      //   {
+      //     name: 'Apple',
+      //     img: 'apple.gif'
+      //   },
+      //   {
+      //     name: 'Banana',
+      //     img: 'banana.gif'
+      //   },
+      //   {
+      //     name: 'Orange',
+      //     img: 'orange.jpg'
+      //   },
+      //   {
+      //     name: 'Pineapple',
+      //     img: 'pineapple.png'
+      //   },
+      //   {
+      //     name: 'Strawberry',
+      //     img: 'strawberry.png'
+      //   },
+      //   {
+      //     name: 'watermelon',
+      //     img: 'watermelon.jpg'
+      //   },
+      //   {
+      //     name: 'Apple',
+      //     img: 'apple.gif'
+      //   },
+      //   {
+      //     name: 'Banana',
+      //     img: 'banana.gif'
+      //   },
+      //   {
+      //     name: 'Orange',
+      //     img: 'orange.jpg'
+      //   },
+      //   {
+      //     name: 'Pineapple',
+      //     img: 'pineapple.png'
+      //   },
+      //   {
+      //     name: 'Strawberry',
+      //     img: 'strawberry.png'
+      //   },
+      //   {
+      //     name: 'watermelon',
+      //     img: 'watermelon.jpg'
+      //   }
+      // ],
       match: []
     }
   },
-  created () {
-    this.cards.forEach((card) => {
-      Vue.set(card, 'isFlipped', false)
-    })
+  components: {
+    Card
   },
+  created () {
+    this.fetchCards()
+  },
+  computed: {
+    cards () {
+      return this.$store.state.cards
+    }
+  },
+  // mounted () {
+  //   this.cards.forEach((card) => {
+  //     Vue.set(card, 'isFlipped', false)
+  //   })
+  // },
   methods: {
+    fetchCards () {
+      this.$store.dispatch('fetchCards')
+    },
     flipCard (card) {
+      console.log(card);
       card.isFlipped = true
       this.match.push({
         index: this.cards.indexOf(card),
         card
       })
       if (this.match.length === 2) {
-        if (this.match[0].card.name !== this.match[1].card.name) {
+        if (this.match[0].card.code !== this.match[1].card.code) {
           setTimeout(() => {
             this.cards[this.match[0].index].isFlipped = false
             this.cards[this.match[1].index].isFlipped = false
