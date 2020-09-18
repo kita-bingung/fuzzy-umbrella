@@ -83,7 +83,7 @@
                     </div>
                     <div class="leaderboard-each">
                         <div class="leaderboard-text">
-                            <h4>NAME1 1000</h4>
+                            <h4>surya</h4>
                         </div>
                     </div>
                 </div>
