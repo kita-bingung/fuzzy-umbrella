@@ -10,7 +10,12 @@
 <script>
 export default {
   name: 'Card',
-  props: ['card']
+  props: ['card'],
+  methods: {
+    flipCard (data) {
+      this.$emit('flipCard', data)
+    }
+  }
 }
 </script>
 

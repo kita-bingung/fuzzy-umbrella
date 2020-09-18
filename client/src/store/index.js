@@ -6,11 +6,28 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    cards: []
+    cards: [],
+    match: []
   },
   mutations: {
     setCards (state, payload) {
       state.cards = payload
+    },
+    setFlipped (state, card) {
+      state.cards[state.cards.indexOf(card)].isFlipped = true
+      state.match.push({
+        index: state.cards.indexOf(card),
+        card
+      })
+    },
+    resetMatch (state) {
+      if (state.match[0].card.code !== state.match[1].card.code) {
+        state.match.forEach(item => {
+          console.log(item.index)
+          state.cards[item.index].isFlipped = false
+        })
+      }
+      state.match = []
     }
   },
   actions: {
@@ -26,6 +43,16 @@ export default new Vuex.Store({
           commit('setCards', data)
         })
         .catch(console.log)
+    },
+    flipCard ({ state, commit }, card) {
+      if (state.match.length < 2) {
+        commit('setFlipped', card)
+      }
+      setTimeout(() => {
+        if (state.match.length === 2) {
+          commit('resetMatch')
+        }
+      }, 2000)
     }
   },
   modules: {

@@ -6,6 +6,7 @@
           v-for="card in cards"
           :key="card.id"
           :card="card"
+          v-on:flipCard="flipCard"
         />
       </div>
     </div>
@@ -21,56 +22,6 @@ export default {
     return {
       // state.cards[payload.index].isFlipped = true
       newCards: [],
-      // cards: [
-      //   {
-      //     name: 'Apple',
-      //     img: 'apple.gif'
-      //   },
-      //   {
-      //     name: 'Banana',
-      //     img: 'banana.gif'
-      //   },
-      //   {
-      //     name: 'Orange',
-      //     img: 'orange.jpg'
-      //   },
-      //   {
-      //     name: 'Pineapple',
-      //     img: 'pineapple.png'
-      //   },
-      //   {
-      //     name: 'Strawberry',
-      //     img: 'strawberry.png'
-      //   },
-      //   {
-      //     name: 'watermelon',
-      //     img: 'watermelon.jpg'
-      //   },
-      //   {
-      //     name: 'Apple',
-      //     img: 'apple.gif'
-      //   },
-      //   {
-      //     name: 'Banana',
-      //     img: 'banana.gif'
-      //   },
-      //   {
-      //     name: 'Orange',
-      //     img: 'orange.jpg'
-      //   },
-      //   {
-      //     name: 'Pineapple',
-      //     img: 'pineapple.png'
-      //   },
-      //   {
-      //     name: 'Strawberry',
-      //     img: 'strawberry.png'
-      //   },
-      //   {
-      //     name: 'watermelon',
-      //     img: 'watermelon.jpg'
-      //   }
-      // ],
       match: []
     }
   },
@@ -85,33 +36,30 @@ export default {
       return this.$store.state.cards
     }
   },
-  // mounted () {
-  //   this.cards.forEach((card) => {
-  //     Vue.set(card, 'isFlipped', false)
-  //   })
-  // },
   methods: {
     fetchCards () {
       this.$store.dispatch('fetchCards')
     },
     flipCard (card) {
-      console.log(card);
-      card.isFlipped = true
-      this.match.push({
-        index: this.cards.indexOf(card),
-        card
-      })
-      if (this.match.length === 2) {
-        if (this.match[0].card.code !== this.match[1].card.code) {
-          setTimeout(() => {
-            this.cards[this.match[0].index].isFlipped = false
-            this.cards[this.match[1].index].isFlipped = false
-            this.match = []
-          }, 1000)
-        } else {
-          this.match = []
-        }
-      }
+      console.log(card)
+      this.$store.dispatch('flipCard', card)
+      // console.log(card)
+      // card.isFlipped = true
+      // this.match.push({
+      //   index: this.cards.indexOf(card),
+      //   card
+      // })
+      // if (this.match.length === 2) {
+      //   if (this.match[0].card.code !== this.match[1].card.code) {
+      //     setTimeout(() => {
+      //       this.cards[this.match[0].index].isFlipped = false
+      //       this.cards[this.match[1].index].isFlipped = false
+      //       this.match = []
+      //     }, 1000)
+      //   } else {
+      //     this.match = []
+      //   }
+      // }
     }
   }
 }
