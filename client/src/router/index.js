@@ -45,9 +45,9 @@ const router = new VueRouter({
   routes
 })
 
-// router.beforeEach((to, from, next) => {
-//   if (!localStorage.username && to.name !== 'Landing') next({ name: 'Landing' })
-//   else next()
-// })
+router.beforeEach((to, from, next) => {
+  if (!localStorage.username && to.name !== 'Landing') next({ name: 'Landing' })
+  else next()
+})
 
 export default router
