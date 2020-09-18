@@ -3,6 +3,7 @@
     <div id="nav">
       <router-link :to="{ name: 'Home' }">Home</router-link> |
       <router-link :to="{ name: 'Leaderboard' }">Leaderboard</router-link>
+      <!-- <router-link :to="{ name: 'Home' }">Home</router-link> | -->
     </div>
     <router-view/>
   </div>
