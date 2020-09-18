@@ -13,6 +13,18 @@ export default {
   props: ['card'],
   methods: {
     flipCard (data) {
+      if (this.$store.state.currentPlayer.name === localStorage.username) {
+        console.log('bisa <<<<<<<<<<<<<<<<<<<<flop')
+        this.$socket.emit('flipCard', data)
+        this.$emit('flipCard', data)
+      } else {
+        alert('stop')
+      }
+    }
+  },
+  sockets: {
+    flipCard: function (data) {
+      console.log(data, 'flipcard <<<<<<<<<<<<<<<<<<<<flop')
       this.$emit('flipCard', data)
     }
   }

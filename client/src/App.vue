@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <!-- <div id="nav">
+      <router-link :to="{ name: 'Home' }">Home</router-link> |
+      <router-link :to="{ name: 'Leaderboard' }">Leaderboard</router-link>
+    </div> -->
     <router-view/>
     <footer>
       <div style="width: 100%; text-align: center;">

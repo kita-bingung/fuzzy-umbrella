@@ -6,7 +6,7 @@
         <router-link class="link link2" :to="{ name: 'Leaderboard' }">🏅 Leaderboard</router-link>
       </div>
       <div>
-        <p class="name">👤 NAME1</p>
+        <p class="name">👤 {{ username }}</p>
         <button @click="exit" class="exit-game" type="button">Exit Game</button>
       </div>
     </div>
@@ -15,7 +15,7 @@
     </div>
     <div class="user-bar">
       <div class="score-container">
-        <h2 class="score">Score: 980  🎲 <span style="font-weight: 300">NAME1 playing...</span></h2>
+        <h2 class="score">Score: 980  🎲 <span style="font-weight: 300">{{ currentPlayer.name }} playing...</span></h2>
       </div>
       <div class="score-container">
         
@@ -32,8 +32,14 @@
 <script>
 // @ is an alias to /src
 import TestCard from '../components/TestCard.vue'
+
 export default {
   name: 'Home',
+  data () {
+    return {
+      username: ''
+    }
+  },
   components: {
     TestCard
   },
@@ -41,6 +47,20 @@ export default {
     exit () {
       localStorage.clear()
       this.$router.push({ name: 'Landing' })
+    }
+  },
+  // sockets: {
+  //   // init: function (data) {
+  //   //   console.log('masuk disini <<<<<<<<<<<<<<<<<<<<<<<<<')
+  //   //   // this.$store.commit('setCards', data)
+  //   // },
+  // },
+  created () {
+    this.username = localStorage.username
+  },
+  computed: {
+    currentPlayer () {
+      return this.$store.state.currentPlayer
     }
   }
 }
