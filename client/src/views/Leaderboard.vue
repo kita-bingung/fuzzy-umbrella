@@ -69,8 +69,25 @@
             </div>
         </div>
     </section> -->
-    <div>
-        <h1>Leaderboard</h1>
+    <div class="leaderboard-cont">
+        <div class="home-container">
+        <div class="home-top-bar">
+        <div id="nav">
+            <router-link class="link" :to="{ name: 'Home' }">🏡 Home</router-link>
+            <router-link class="link link2" :to="{ name: 'Leaderboard' }">🏅 Leaderboard</router-link>
+        </div>
+        </div>
+        <div class="leaderboard-container">
+            <div class="leaderboard-top">
+                <h1>😳 Leaderboard 🥳</h1>
+            </div>
+            <div class="leaderboard-each">
+                <div class="leaderboard-text">
+                    <h4>Alex 1000</h4>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 </template>
 
@@ -81,7 +98,7 @@ export default {
 </script>
 
 <style>
-    .box {
+    /* .box {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
             transition: 0.3s;
             border-radius: 25px
@@ -101,5 +118,6 @@ export default {
 
         .wrapper .item {
             color: black
-        }
+        } */
+
 </style>

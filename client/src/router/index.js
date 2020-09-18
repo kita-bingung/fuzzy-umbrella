@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Landing from '../views/Landing.vue'
 import NotFound from '../views/NotFound.vue'
 import Leaderboard from '../views/Leaderboard.vue'
+import WinLose from '../views/WinLose.vue'
 
 Vue.use(VueRouter)
 
@@ -11,14 +12,20 @@ const routes = [
   {
     path: '/play',
     name: 'Home',
-    component: Home,
-    children: [
-      {
-        path: 'leaderboard',
-        name: 'Leaderboard',
-        component: Leaderboard
-      }
-    ]
+    component: Home
+    // children: [
+      
+    // ]
+  },
+  {
+    path: '/leaderboard',
+    name: 'Leaderboard',
+    component: Leaderboard
+  },
+  {
+    path: '/done',
+    name: 'WinLose',
+    component: WinLose
   },
   {
     path: '/',
