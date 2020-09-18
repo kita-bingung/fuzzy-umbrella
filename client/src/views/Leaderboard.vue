@@ -76,6 +76,7 @@
                     <router-link class="link" :to="{ name: 'Home' }">🏡 Home</router-link>
                     <router-link class="link link2" :to="{ name: 'Leaderboard' }">🏅 Leaderboard</router-link>
                 </div>
+                </div>
                 <div class="leaderboard-container">
                     <div class="leaderboard-top">
                         <h1>😳 Leaderboard 🥳</h1>
@@ -88,7 +89,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </template>
 
 <script>
