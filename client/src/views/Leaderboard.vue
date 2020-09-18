@@ -1,5 +1,5 @@
 <template>
-  <section id="ladderBoard">
+  <!-- <section id="ladderBoard">
         <div class="box" style="margin: 0 auto; width: 40%;">
             <div class="box" style="background-color: aquamarine; width: 100%;">
                 <h1 style="text-align: center;">LeaderBoard</h1>
@@ -68,7 +68,10 @@
 
             </div>
         </div>
-    </section>
+    </section> -->
+    <div>
+        <h1>Leaderboard</h1>
+    </div>
 </template>
 
 <script>

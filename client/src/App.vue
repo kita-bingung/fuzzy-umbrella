@@ -30,4 +30,20 @@
   color: #42b983;
 } */
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  font-weight: 700;
+  color: rgb(80,80,80);
+}
+
+h3 {
+  font-weight: 400;
+  color: rgb(80,80,80);
+}
+
 </style>
