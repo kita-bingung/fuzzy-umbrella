@@ -7,7 +7,7 @@
           :key="card.id"
           :card="card"
           v-on:flipCard="flipCard"
-        />
+        />{{ users }}
       </div>
     </div>
   </div>
@@ -20,7 +20,6 @@ export default {
   name: 'TestCard',
   data () {
     return {
-      // state.cards[payload.index].isFlipped = true
       newCards: [],
       match: []
     }
@@ -28,38 +27,23 @@ export default {
   components: {
     Card
   },
-  created () {
-    this.fetchCards()
+  sockets: {
+    // init: function (data) {
+    //   // this.$store.commit('setCards', data)
+    // }
   },
   computed: {
     cards () {
       return this.$store.state.cards
+    },
+    users () {
+      return this.$store.state.users
     }
   },
   methods: {
-    fetchCards () {
-      this.$store.dispatch('fetchCards')
-    },
     flipCard (card) {
-      console.log(card)
       this.$store.dispatch('flipCard', card)
-      // console.log(card)
-      // card.isFlipped = true
-      // this.match.push({
-      //   index: this.cards.indexOf(card),
-      //   card
-      // })
-      // if (this.match.length === 2) {
-      //   if (this.match[0].card.code !== this.match[1].card.code) {
-      //     setTimeout(() => {
-      //       this.cards[this.match[0].index].isFlipped = false
-      //       this.cards[this.match[1].index].isFlipped = false
-      //       this.match = []
-      //     }, 1000)
-      //   } else {
-      //     this.match = []
-      //   }
-      // }
+      this.$socket.emit('updateCard', this.$store.state.cards)
     }
   }
 }
