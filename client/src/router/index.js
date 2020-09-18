@@ -33,7 +33,7 @@ const routes = [
     component: Landing
   },
   {
-    path: '/404',
+    path: '*',
     name: 'NotFound',
     component: NotFound
   }

@@ -71,23 +71,24 @@
     </section> -->
     <div class="leaderboard-cont">
         <div class="home-container">
-        <div class="home-top-bar">
-        <div id="nav">
-            <router-link class="link" :to="{ name: 'Home' }">🏡 Home</router-link>
-            <router-link class="link link2" :to="{ name: 'Leaderboard' }">🏅 Leaderboard</router-link>
-        </div>
-        </div>
-        <div class="leaderboard-container">
-            <div class="leaderboard-top">
-                <h1>😳 Leaderboard 🥳</h1>
-            </div>
-            <div class="leaderboard-each">
-                <div class="leaderboard-text">
-                    <h4>Alex 1000</h4>
+            <div class="home-top-bar">
+                <div id="nav">
+                    <router-link class="link" :to="{ name: 'Home' }">🏡 Home</router-link>
+                    <router-link class="link link2" :to="{ name: 'Leaderboard' }">🏅 Leaderboard</router-link>
+                </div>
+                </div>
+                <div class="leaderboard-container">
+                    <div class="leaderboard-top">
+                        <h1>😳 Leaderboard 🥳</h1>
+                    </div>
+                    <div class="leaderboard-each">
+                        <div class="leaderboard-text">
+                            <h4>NAME1 1000</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </template>
 

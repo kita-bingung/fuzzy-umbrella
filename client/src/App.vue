@@ -272,4 +272,23 @@ button {
   outline: none;
 }
 
+.not-found {
+  width: 90vw;
+  height: 75vh;
+}
+
+.inside {
+  display: flex;
+  flex-direction: column;
+}
+
+.fud {
+  margin-top: 1rem;
+}
+
+.nom {
+  font-size: 1.5rem;
+  color: rgb(120,120,120);
+}
+
 </style>

@@ -6,7 +6,7 @@
         <router-link class="link link2" :to="{ name: 'Leaderboard' }">🏅 Leaderboard</router-link>
       </div>
       <div>
-        <p class="name">👤 NAME</p>
+        <p class="name">👤 NAME1</p>
         <button @click="exit" class="exit-game" type="button">Exit Game</button>
       </div>
     </div>
@@ -15,10 +15,13 @@
     </div>
     <div class="user-bar">
       <div class="score-container">
-        <h2 class="score">Score: 980</h2>
+        <h2 class="score">Score: 980  🎲 <span style="font-weight: 300">NAME1 playing...</span></h2>
+      </div>
+      <div class="score-container">
+        
       </div>
       <div class="opponent-container">
-        <h2 class="opponent">⛄️ You're competing: Sam</h2>
+        <h2 class="opponent">⛄️ You're competing: NAME2</h2>
       </div>
     </div>
     <TestCard></TestCard>
